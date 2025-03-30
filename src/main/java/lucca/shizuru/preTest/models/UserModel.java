@@ -18,10 +18,9 @@ public class UserModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-    private String login;
-    private String password;
-    private String email;
+    private UUID userId;
+    private String userLogin;
+    private String userPassword;
     private String role;
 
 
