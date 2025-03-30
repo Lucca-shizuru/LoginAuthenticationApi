@@ -40,8 +40,11 @@ public class CategoryService {
             return categoryRepository.save(existingCategory);
         }).orElseThrow(() -> new EntityNotFoundException("Category not found"));
     }
-    public ResponseEntity<CategoryModel> deleteCategory(UUID id) {
+    public ResponseEntity<Void> deleteCategory(UUID id) {
+        if(categoryRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
         categoryRepository.deleteById(id);
-
+        return ResponseEntity.noContent().build();
     }
 }
