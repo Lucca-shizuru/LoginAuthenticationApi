@@ -8,10 +8,10 @@ import lucca.shizuru.preTest.models.CategoryModel;
 import lucca.shizuru.preTest.repositories.CategoryRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -30,16 +30,18 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    public Optional<CategoryModel> getCategoryById(UUID id) {
-        return categoryRepository.findById(id);
+    public CategoryModel getCategoryById(UUID id) {
+        return categoryRepository.findById(id)
+                .orElseThrow(()-> new EntityNotFoundException("Category not Found"));
     }
-    public CategoryModel updateCategoryById(UUID id, ValidationCategoryDto validationCategoryDto) {
+    public CategoryModel updateCategory(UUID id, ValidationCategoryDto validationCategoryDto) {
         return categoryRepository.findById(id).map(existingCategory -> {
             BeanUtils.copyProperties(validationCategoryDto, existingCategory);
             return categoryRepository.save(existingCategory);
         }).orElseThrow(() -> new EntityNotFoundException("Category not found"));
     }
-    public void deleteCategoryById(UUID id) {
+    public ResponseEntity<CategoryModel> deleteCategory(UUID id) {
         categoryRepository.deleteById(id);
+
     }
 }
