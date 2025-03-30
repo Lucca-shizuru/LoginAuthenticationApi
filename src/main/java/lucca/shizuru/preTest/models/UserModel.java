@@ -2,7 +2,7 @@ package lucca.shizuru.preTest.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.repository.CrudRepositoryExtensionsKt;
+import lucca.shizuru.preTest.enums.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

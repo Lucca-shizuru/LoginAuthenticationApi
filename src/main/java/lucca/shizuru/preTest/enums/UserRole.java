@@ -1,4 +1,4 @@
-package lucca.shizuru.preTest.models;
+package lucca.shizuru.preTest.enums;
 
 public enum UserRole {
     ADMIN("admin"),
