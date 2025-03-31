@@ -38,7 +38,7 @@ public class CategoryController {
                                                         @Valid @RequestBody ValidationCategoryDto validationCategoryDto) {
         return ResponseEntity.ok(categoryService.updateCategory(id, validationCategoryDto));
     }
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<CategoryModel> deleteCategoryById(@PathVariable UUID id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.noContent().build();
