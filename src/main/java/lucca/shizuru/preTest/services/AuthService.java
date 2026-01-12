@@ -29,7 +29,7 @@ public class AuthService {
     }
     public void register(RegisterDto data) {
         if (this.userRepository.findByUserLogin(data.userLogin()) != null) {
-            throw new RuntimeException("User already exists");
+            throw new UserAlreadyExistsException();
         }
 
         String encryptedPassword = passwordEncoder.encode(data.userPassword());
