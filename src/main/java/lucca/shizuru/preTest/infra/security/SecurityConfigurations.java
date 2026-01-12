@@ -40,7 +40,9 @@ public class SecurityConfigurations {
         return authenticationConfiguration.getAuthenticationManager();
     }
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
 }
